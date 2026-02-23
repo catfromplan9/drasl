@@ -376,7 +376,7 @@ func SessionHeartbeat(app *App) func(c echo.Context) error {
 			salt = c.QueryParam("salt")
 		}
 		if salt == "" {
-			return c.String(http.StatusBadRequest, "missing required query parameter: salt")
+			salt = "missingno" // no salt here! are we speaking with c0.0.15a-c0.0.16a?
 		}
 
 		return app.heartbeat(&c, ip, port, salt)
